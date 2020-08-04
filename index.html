@@ -26,11 +26,11 @@
         
          <div class="row">
              
-             <div class="col-lg-8 col-md-4 col-sm-4">
+             <div class="col-lg-8 ">
                 <h2>Log in</h2>
                <p><input class="pass" type="email" placeholder="Email"></p>
              </div>
-             <div class="col-lg-8 col-md-4 col-sm-4">
+             <div class="col-lg-8 ">
                  <p></p><input class="pass" type="password"placeholder="Password"></p>
                  <button id="logIn" class="btn btn-success">Enter</button>
              </div>
@@ -99,43 +99,39 @@
 
      //deposit button event handler
      const addDepo = document.getElementById('AddDepo').addEventListener('click', function(){
-         const depoAmount = document.getElementById('depoAmount').value;
-         document.getElementById('depoAmount').value = "";
-         const depoNumber = parseFloat(depoAmount);
+        //  const depoAmount = document.getElementById('depoAmount').value;
+        //  document.getElementById('depoAmount').value = "";
+        //  const depoNumber = parseFloat(depoAmount);
+       const depoNumber = getInputNumber('depoAmount');
 
-         const currentDeposite = document.getElementById('currentDeposite').innerText;
-         const currentDepositeNumber = parseFloat(currentDeposite);
-         const totalDeposit = currentDepositeNumber + depoNumber;
-         document.getElementById('currentDeposite').innerText = totalDeposit; 
-
-
+           updateSpanId('currentDeposite',depoNumber);
          //current balance and adding and fixing balance
-     const currentBalance = document.getElementById('currentBalance').innerText;
-     const currentBalanceNumber = parseFloat(currentBalance);
-     const totalBalance = totalDeposit + currentBalanceNumber;
-     document.getElementById('currentBalance').innerText = totalBalance;  
+   
+         updateSpanId('currentBalance',depoNumber);
 
      })
-     
+     //withdraw button evet handler
      const addWtdrw = document.getElementById('addWithdraw').addEventListener('click',function(){
-         var withdrawAmount = document.getElementById('wtdrwAmount').value;
-         document.getElementById('wtdrwAmount').value = "";
-         const withdrawAmountBalance = parseFloat(withdrawAmount);
-          // adding withdraw
-          const withdrawBalance = document.getElementById('currentWithdraw').innerText;
-          const currentWithdrawNumber = parseFloat(withdrawBalance);
-          const totalWithdraw = withdrawAmountBalance + currentWithdrawNumber;
-          document.getElementById('currentWithdraw').innerText = totalWithdraw;
-
-
-         //current balance and adding and fixing balance
-         const currentBalance = document.getElementById('currentBalance').innerText;
-     const currentBalanceNumber = parseFloat(currentBalance);
-     const totalBalance = currentBalanceNumber - totalWithdraw ;
-     document.getElementById('currentBalance').innerText = totalBalance;  
+        const withdrawNumber= getInputNumber('wtdrwAmount');
+       updateSpanId('currentWithdraw', withdrawNumber);
+       updateSpanId('currentBalance', -1 * withdrawNumber);
+           
      })
+     function getInputNumber(id){
+        const Amount = document.getElementById(id).value;
+         document.getElementById(id).value = "";
+         const amountNumber = parseFloat(Amount);
+         return amountNumber;
 
+     }
 
+   function updateSpanId(id, depoNumber){
+    const current = document.getElementById(id).innerText;
+         const currentNumber = parseFloat(current);
+         const total = currentNumber + depoNumber;
+         document.getElementById(id).innerText = total; 
+   }
+ 
 
  </script>
   
