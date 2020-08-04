@@ -100,12 +100,14 @@
      //deposit button event handler
      const addDepo = document.getElementById('AddDepo').addEventListener('click', function(){
          const depoAmount = document.getElementById('depoAmount').value;
+         document.getElementById('depoAmount').value = "";
          const depoNumber = parseFloat(depoAmount);
 
          const currentDeposite = document.getElementById('currentDeposite').innerText;
          const currentDepositeNumber = parseFloat(currentDeposite);
          const totalDeposit = currentDepositeNumber + depoNumber;
-         document.getElementById('currentDeposite').innerText = totalDeposit;  
+         document.getElementById('currentDeposite').innerText = totalDeposit; 
+
 
          //current balance and adding and fixing balance
      const currentBalance = document.getElementById('currentBalance').innerText;
@@ -117,6 +119,7 @@
      
      const addWtdrw = document.getElementById('addWithdraw').addEventListener('click',function(){
          var withdrawAmount = document.getElementById('wtdrwAmount').value;
+         document.getElementById('wtdrwAmount').value = "";
          const withdrawAmountBalance = parseFloat(withdrawAmount);
           // adding withdraw
           const withdrawBalance = document.getElementById('currentWithdraw').innerText;
