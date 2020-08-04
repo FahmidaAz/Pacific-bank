@@ -7,6 +7,8 @@
    
    box-shadow: 1px 3px 10px grey;
    border-radius: 10px;
+   
+  
 }
 .pass{
     width:800px;
@@ -34,4 +36,11 @@
 }
 .balance{
     background-color: sandybrown;
+}
+.submit{
+    padding:40px 100px;
+   
+}
+.submitArea{
+    margin: 20px;
 }
